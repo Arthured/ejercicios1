@@ -25,24 +25,29 @@ safetail'' :: [a] -> [a]
 safetail'' xs | length xs == 0  = []
               | otherwise       = tail xs
 
-{-Ejercicio 4
-(||) :: Bool -> Bool -> Bool
-True || True = True
-True || False = True
-False || True = True
-False || False = False
+--Ejercicio 4
+(|||) :: Bool -> Bool -> Bool
+True ||| True = True
+True ||| False = True
+False ||| True = True
+False ||| False = False
 
-(||) :: Bool -> Bool -> Bool
-True || _ = True
-False|| b = b
+(||||) :: Bool -> Bool -> Bool
+True |||| _  = True
+False|||| b = b
 
-(||) :: Bool -> Bool -> Bool
-b || c | b==c =b
+(|||||) :: Bool -> Bool -> Bool
+b ||||| c | b == c = b
        | otherwise = True
  
- _ || _ =True
-False || False =False
--}
+False |||||| False = False
+_ |||||| _  = True
+
+(&&&) :: Bool -> Bool -> Bool
+(&&&) a b = if a == True then (if b == True then True else False) else False
+
+(&&&&) :: Bool -> Bool -> Bool
+(&&&&) a b = if a == True then b else False
 
 --mult :: int -> int -> int -> int Ejercicio 7
 mult = \x -> (\y -> (\z -> x*y*z))
